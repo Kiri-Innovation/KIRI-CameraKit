@@ -66,8 +66,11 @@ CameraKit.init(
 KT 代码 API:
 
 ```Kotlin
+// 初始化相机和预览操作
+cameraView.bind(LifecycleOwner)
+
 // 设置拍摄的照片存放路径
-cameraView.setSavePath()
+cameraView.setSavePath(File)
 
 // 设置拍摄相关的事件回调
 cameraView.setTakePictureListener(object : OnTakePictureListener {
@@ -89,6 +92,7 @@ cameraView.takePicture()
 
 | 方法名称 | 说明 |
 | ----- | ----- |
+| bind | 初始化相机和预览操作, 参数为 LifecycleOwner 对象, 会自动绑定生命周期 |
 | setSavePath | 设置拍摄的照片存放路径, 参数为 File 对象 |
 | setTakePictureListener | 设置拍摄相关的事件回调，为 OnTakePictureListener 类型 |
 | takePicture | 拍摄照片 |
