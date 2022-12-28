@@ -1,3 +1,8 @@
+# 安卓入口
+- https://github.com/Kiri-Innovation/KIRI-CameraKit/blob/main/README-Android.md
+# iOS入口
+- https://github.com/Kiri-Innovation/KIRI-CameraKit/blob/main/README-iOS.md
+
 # API 说明
 
 ## 鉴权 API
