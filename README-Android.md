@@ -54,6 +54,17 @@ CameraKit.init(
 
 ## 3. Camera API
 
+布局文件中使用:
+
+```xml
+<com.kiri.camera.toolkit.view.CameraView
+        android:id="@+id/camera_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+```
+
+KT 代码 API:
+
 ```Kotlin
 // 设置拍摄的照片存放路径
 cameraView.setSavePath()
