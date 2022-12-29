@@ -107,5 +107,5 @@ OnTakePictureListener 声明:
 | void | onTakeError(exception: Exception) | 拍摄发生异常时的回调, 参数会将本次的异常信息携带回来 |
 
 
-⚠️ 注意：CameraView 需要带触摸屏幕自动对焦功能
+⚠️ 注意：相机权限需要自行动态申请
 
