@@ -24,17 +24,17 @@ dependencies {
 
 ```Kotlin
 CameraKit.init(
-    // SDK 环境
+    // SDK Environment
     env = EnvType.Test, 
-    // 平台账号
+    // account in our plafrom
     account = "", 
-    // 平台密码
+    // password associates with the account
     password = "",
     onSuccess = {
-        // SDK 初始化成功
+        // SDK initialized successfully
     },
     onError = { e ->
-        // SDK 初始化发生错误
+        // SDK initialized failed
     }
 )
 ```
@@ -45,7 +45,7 @@ CameraKit.init(
 | account | account in our plafrom |
 | password | password associates with the account |
 | onSuccess | SDK initialized successfully |
-| onError | SDK initialized failed  |
+| onError | SDK initialized failed |
 
 Possible exception in "onError":
 
@@ -178,7 +178,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // 请求权限
+        // Request permission
         rxPermissions.request(Manifest.permission.CAMERA).subscribe { granted ->
             if (granted) {
                 cameraView.bind(this)
@@ -188,14 +188,14 @@ class MainActivity : AppCompatActivity() {
         initCameraKitSDK()
     }
 
-    /**  初始化 CameraKit SDK  **/
+    /**  Initialize CameraKit SDK  **/
     private fun initCameraKitSDK() {
         CameraKit.init(
             env = EnvType.Test, account = "", password = "",
             onSuccess = {
-                // SDK 初始化成功
+                // SDK initialized successfully
                 runOnUiThread {
-                    // SDK 和权限都已申请完毕, 进行相机初始化操作
+                    // SDK and permission passed, start initialize the camera
                     initCamera()
                 }
             },
@@ -203,46 +203,46 @@ class MainActivity : AppCompatActivity() {
                 // SDK 初始化发生错误
                 when (e) {
                     is AccountNotExistException -> {
-                        println("账号不存在!")
+                        println("Account does not exist!")
                     }
                     is AuthenticationException -> {
-                        println("账号密码错误!")
+                        println("Account or password is incorrect!")
                     }
                     is ExhaustedException -> {
-                        println("接口调用次数用尽!")
+                        println("Quota used up!")
                     }
                     is SDKException -> {
-                        println("SDK 异常: ${e.message}")
+                        println("SDK error: ${e.message}")
                     }
                 }
             }
         )
     }
 
-    /**  媒体文件夹  **/
+    /**  Media folder  **/
     private val mediaDir by lazy {
         externalMediaDirs.firstOrNull()?.let {
             File(it, "Photo").apply { mkdirs() }
         } ?: filesDir
     }
 
-    /**  初始化相机相关的 API  **/
+    /**  Initial camera related API  **/
     private fun initCamera() {
-        // 设置拍摄的照片存放路径
+        // Set the path of captured photos. 
         cameraView.setSavePath(mediaDir)
 
-        // 设置拍摄相关的事件回调
+        // Set capturing photo related callback
         cameraView.setTakePictureListener(object : OnTakePictureListener {
             override fun onTaken(photoFile: File) {
-                Log.e(TAG, "已拍摄一张照片, 存放位置为: ${photoFile.absolutePath}")
+                Log.e(TAG, "Took one photo, saved in: ${photoFile.absolutePath}")
             }
 
             override fun onTakeError(exception: Exception) {
-                Log.e(TAG, "照片拍摄出错, 异常为: ${exception.message}")
+                Log.e(TAG, "Error in taking photo, error message is: ${exception.message}")
             }
         })
 
-        // 拍摄照片
+        // Take photos
         takenBtn.setOnClickListener {
             cameraView.takePicture()
         }
