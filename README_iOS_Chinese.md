@@ -1,7 +1,7 @@
 
 ## iOS的使用
 
-## 1. 接入framework文件
+## 1.接入framework文件
 先从 Release 页面下载对应版本的 framwork 文件, 并放入 app 项目路径中,
 将framework放入Build Phases -> Link Binary With Libraries中，
 Embed选择Embed & Sign
