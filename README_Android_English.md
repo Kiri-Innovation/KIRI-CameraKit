@@ -10,7 +10,7 @@ add dependencies in app/build.gradle file
 dependencies {
     implementation files('my_path/my_lib.aar')
     
-    // 以下依赖必须添加
+    //  Must add below dependencies
     implementation "androidx.camera:camera-core:1.2.0-alpha02"
     implementation "androidx.camera:camera-lifecycle:1.2.0-alpha02"
     implementation 'androidx.camera:camera-view:1.2.0-alpha02'
